@@ -1,11 +1,11 @@
 module Page.Loading exposing (..)
 
-import Html exposing (..)
-import Update
-import Model exposing (LoadingType(..))
-import Styling
 import Bootstrap.Progress as Progress
 import Bootstrap.Utilities.Spacing as Spacing
+import Html exposing (..)
+import Model exposing (LoadingType(..))
+import Styling
+import Update
 
 
 view : LoadingType -> Html Update.Msg

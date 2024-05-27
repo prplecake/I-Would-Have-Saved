@@ -1,12 +1,13 @@
 module Update exposing (..)
 
-import Model exposing (..)
-import Http
-import Ynab
-import Task
-import DatePicker
 import Bootstrap.Dropdown as Dropdown
+import DatePicker
 import DatePickerSettings
+import Http
+import Model exposing (..)
+import Task
+import Ynab
+
 
 
 --import Result
@@ -59,14 +60,14 @@ update msg model =
                     DatePicker.init
                         |> Tuple.mapSecond (Cmd.map SetDatePicker)
             in
-                ( TransactionViewer
-                    { transactions = transactions
-                    , datePicker = datePicker
-                    , viewState = initialViewState
-                    , filters = emptyFilters
-                    }
-                , datePickerCmd
-                )
+            ( TransactionViewer
+                { transactions = transactions
+                , datePicker = datePicker
+                , viewState = initialViewState
+                , filters = emptyFilters
+                }
+            , datePickerCmd
+            )
 
         ( Loading _, TransactionsFetched (Err error) ) ->
             ( Error (ApiDown error), Cmd.none )
@@ -87,7 +88,7 @@ update msg model =
                 newPageData =
                     { pageData | filters = newFilters }
             in
-                ( TransactionViewer newPageData, Cmd.none )
+            ( TransactionViewer newPageData, Cmd.none )
 
         ( TransactionViewer pageData, PayeeSelected payeeFilter ) ->
             let
@@ -100,7 +101,7 @@ update msg model =
                 newPageData =
                     { pageData | filters = newFilters }
             in
-                ( TransactionViewer newPageData, Cmd.none )
+            ( TransactionViewer newPageData, Cmd.none )
 
         ( TransactionViewer pageData, AdjustmentSelected adjustmentFilter ) ->
             let
@@ -113,7 +114,7 @@ update msg model =
                 newPageData =
                     { pageData | filters = newFilters }
             in
-                ( TransactionViewer newPageData, Cmd.none )
+            ( TransactionViewer newPageData, Cmd.none )
 
         ( TransactionViewer pageData, SetDatePicker msg ) ->
             let
@@ -140,9 +141,9 @@ update msg model =
                 newPageData =
                     { pageData | filters = newFilters, datePicker = newDatePicker }
             in
-                ( TransactionViewer newPageData
-                , Cmd.map SetDatePicker datePickerCmd
-                )
+            ( TransactionViewer newPageData
+            , Cmd.map SetDatePicker datePickerCmd
+            )
 
         ( TransactionViewer pageData, DropdownMsg dropdownType dropdown ) ->
             let
@@ -163,7 +164,7 @@ update msg model =
                 newPageData =
                     { pageData | viewState = newViewState }
             in
-                ( TransactionViewer newPageData, Cmd.none )
+            ( TransactionViewer newPageData, Cmd.none )
 
         ( _, NoOp ) ->
             ( model, Cmd.none )

@@ -1,14 +1,14 @@
 module Page.BudgetSelector exposing (view)
 
-import Model
+import Bootstrap.Button as Button
+import Bootstrap.Utilities.Size as Size
+import Bootstrap.Utilities.Spacing as Spacing
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Update
+import Model
 import Styling
-import Bootstrap.Button as Button
-import Bootstrap.Utilities.Spacing as Spacing
-import Bootstrap.Utilities.Size as Size
+import Update
 
 
 view : Model.BudgetSelectorData -> Html Update.Msg

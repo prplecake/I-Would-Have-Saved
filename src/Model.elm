@@ -1,9 +1,9 @@
 module Model exposing (..)
 
+import Bootstrap.Dropdown as Dropdown
 import Date exposing (Date)
 import DatePicker
 import Http
-import Bootstrap.Dropdown as Dropdown
 
 
 type alias Config =

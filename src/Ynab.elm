@@ -1,9 +1,9 @@
 module Ynab exposing (fetchBudgets, fetchTransactions)
 
-import Json.Decode as Decode
-import Http exposing (..)
-import Model exposing (Budget, AccessToken(..), BudgetId(..), Transaction)
 import Date exposing (Date)
+import Http exposing (..)
+import Json.Decode as Decode
+import Model exposing (AccessToken(..), Budget, BudgetId(..), Transaction)
 import Result exposing (..)
 
 
@@ -55,8 +55,8 @@ decodeDate =
                 Err e ->
                     Decode.fail e
     in
-        Decode.string
-            |> Decode.andThen (decodeDateOrFail)
+    Decode.string
+        |> Decode.andThen decodeDateOrFail
 
 
 fetchBudgetsUrl : AccessToken -> String

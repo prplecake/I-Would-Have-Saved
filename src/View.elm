@@ -1,16 +1,16 @@
 module View exposing (view)
 
-import Html exposing (Html)
-import Model exposing (Model(..))
-import Update exposing (Msg)
-import Page.Loading
-import Page.LoggedOut
-import Page.BudgetSelector
-import Page.TransactionViewer
-import Page.ErrorView
-import Page.PrivacyPolicy
 import Bootstrap.Grid as Grid
 import Bootstrap.Utilities.Spacing as Spacing
+import Html exposing (Html)
+import Model exposing (Model(..))
+import Page.BudgetSelector
+import Page.ErrorView
+import Page.Loading
+import Page.LoggedOut
+import Page.PrivacyPolicy
+import Page.TransactionViewer
+import Update exposing (Msg)
 
 
 view : Model -> Html Msg
