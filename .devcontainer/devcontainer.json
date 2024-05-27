@@ -2,5 +2,9 @@
 	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/elm-asdf:2": {}
+	},
+	"postCreateCommand": {
+		"elm-upgrade": "npm i -g elm-upgrade",
+		"elm-format": "npm i -g elm-format@0.8.4"
 	}
 }
