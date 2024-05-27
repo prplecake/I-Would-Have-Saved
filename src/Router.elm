@@ -1,9 +1,9 @@
 module Router exposing (..)
 
-import UrlParser exposing (..)
+import Model exposing (AccessToken(..))
 import Navigation
 import Regex
-import Model exposing (AccessToken(..))
+import UrlParser exposing (..)
 
 
 type Route

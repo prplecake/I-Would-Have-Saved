@@ -1,9 +1,9 @@
-module TransactionReducer exposing (savings, categories, payees, isBetweenDates)
+module TransactionReducer exposing (categories, isBetweenDates, payees, savings)
 
-import Model exposing (..)
-import List.Extra
 import Date exposing (Date)
 import Date.Extra.Compare as DateCompare
+import List.Extra
+import Model exposing (..)
 
 
 savings : Filters -> List Transaction -> Float
@@ -121,8 +121,9 @@ isBetweenDates : List Transaction -> Date -> Bool
 isBetweenDates transactions date =
     let
         sorter date1 date2 =
-            if (DateCompare.is DateCompare.SameOrAfter date1 date2) then
+            if DateCompare.is DateCompare.SameOrAfter date1 date2 then
                 GT
+
             else
                 LT
 
@@ -140,6 +141,6 @@ isBetweenDates transactions date =
         dateComparator min max =
             DateCompare.is3 DateCompare.BetweenOpen date min max
     in
-        Maybe.map2 dateComparator first last
-            |> Maybe.map not
-            |> Maybe.withDefault False
+    Maybe.map2 dateComparator first last
+        |> Maybe.map not
+        |> Maybe.withDefault False

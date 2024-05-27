@@ -1,15 +1,14 @@
 module Page.LoggedOut exposing (..)
 
-import Model
-import Html exposing (..)
-import Html.Attributes exposing (href)
-import Update
-import Model
 import Bootstrap.Button as Button
-import Bootstrap.Utilities.Spacing as Spacing
-import Styling
 import Bootstrap.Grid.Col as Col
 import Bootstrap.Text as Text
+import Bootstrap.Utilities.Spacing as Spacing
+import Html exposing (..)
+import Html.Attributes exposing (href)
+import Model
+import Styling
+import Update
 
 
 view : Model.Config -> Html Update.Msg

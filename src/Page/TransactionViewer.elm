@@ -1,23 +1,23 @@
 module Page.TransactionViewer exposing (..)
 
-import Model
-import Html exposing (..)
-import Html.Attributes exposing (class, style)
-import Html.Events exposing (onClick)
-import Update exposing (Msg)
-import TransactionReducer
-import DatePicker
-import DatePickerSettings
-import Styling
-import Bootstrap.Dropdown as Dropdown
 import Bootstrap.Button as Button
-import Bootstrap.Utilities.Flex as Flex
-import Bootstrap.Utilities.Spacing as Spacing
+import Bootstrap.Dropdown as Dropdown
 import Bootstrap.Grid as Grid
 import Bootstrap.Grid.Col as Col
 import Bootstrap.Grid.Row as Row
+import Bootstrap.Utilities.Flex as Flex
+import Bootstrap.Utilities.Spacing as Spacing
+import DatePicker
+import DatePickerSettings
 import FormatNumber
 import FormatNumber.Locales
+import Html exposing (..)
+import Html.Attributes exposing (class, style)
+import Html.Events exposing (onClick)
+import Model
+import Styling
+import TransactionReducer
+import Update exposing (Msg)
 
 
 view : Model.TransactionViewerData -> Html Msg
@@ -46,8 +46,8 @@ viewSavings filters transactions =
 selectorRow : String -> List (Html Msg) -> Html Msg
 selectorRow title children =
     Grid.row
-        [ Row.centerXs, (Row.attrs [ Flex.alignItemsCenter, Spacing.mb2 ]) ]
-        [ Grid.col ([ Col.md5, Col.sm8 ])
+        [ Row.centerXs, Row.attrs [ Flex.alignItemsCenter, Spacing.mb2 ] ]
+        [ Grid.col [ Col.md5, Col.sm8 ]
             [ div
                 [ Flex.block, Flex.justifyEndMd, Flex.justifyCenter, Flex.alignItemsCenter ]
                 [ label
@@ -57,7 +57,7 @@ selectorRow title children =
                     [ text title ]
                 ]
             ]
-        , Grid.col ([ Col.md5, Col.sm8 ])
+        , Grid.col [ Col.md5, Col.sm8 ]
             [ div
                 [ Flex.block, Flex.justifyStartMd, Flex.justifyCenter, Flex.alignItemsCenter ]
                 children
@@ -70,7 +70,7 @@ viewAdjustmentDropdown { adjustment } dropdown =
     Dropdown.dropdown
         dropdown
         { options = []
-        , toggleMsg = (Update.DropdownMsg Model.AdjustmentDropdown)
+        , toggleMsg = Update.DropdownMsg Model.AdjustmentDropdown
         , toggleButton =
             Dropdown.toggle [ Button.primary, Button.large ] [ text (adjustmentFilterString adjustment) ]
         , items = adjustmentDropdownItems
@@ -88,7 +88,7 @@ adjustmentDropdownItems =
                 |> List.map Model.Active
                 |> List.map adjustmentDropdownItem
     in
-        [ unselectItem ] ++ [ Dropdown.divider ] ++ adjustmentItems
+    [ unselectItem ] ++ [ Dropdown.divider ] ++ adjustmentItems
 
 
 adjustmentDropdownItem : Model.Filter Model.AdjustmentFilter -> Dropdown.DropdownItem Msg
@@ -125,14 +125,14 @@ viewCategoryDropdown transactions filters dropdown =
                 Model.Inactive ->
                     "All Categories"
     in
-        Dropdown.dropdown
-            dropdown
-            { options = []
-            , toggleMsg = (Update.DropdownMsg Model.CategoryDropdown)
-            , toggleButton =
-                Dropdown.toggle [ Button.primary, Button.large ] [ text categoryName ]
-            , items = categoryDropdownItems filters transactions
-            }
+    Dropdown.dropdown
+        dropdown
+        { options = []
+        , toggleMsg = Update.DropdownMsg Model.CategoryDropdown
+        , toggleButton =
+            Dropdown.toggle [ Button.primary, Button.large ] [ text categoryName ]
+        , items = categoryDropdownItems filters transactions
+        }
 
 
 categoryDropdownItems : Model.Filters -> List Model.Transaction -> List (Dropdown.DropdownItem Msg)
@@ -149,7 +149,7 @@ categoryDropdownItems filters transactions =
                 |> List.map (Tuple.mapSecond Model.Active)
                 |> List.map categoryDropdownItem
     in
-        [ unselectItem ] ++ [ Dropdown.divider ] ++ categoryItems
+    [ unselectItem ] ++ [ Dropdown.divider ] ++ categoryItems
 
 
 categoryDropdownItem : ( String, Model.Filter Model.CategoryFilter ) -> Dropdown.DropdownItem Msg
@@ -170,14 +170,14 @@ viewPayeeDropdown transactions filters dropdown =
                 Model.Inactive ->
                     "All Payees"
     in
-        Dropdown.dropdown
-            dropdown
-            { options = []
-            , toggleMsg = (Update.DropdownMsg Model.PayeeDropdown)
-            , toggleButton =
-                Dropdown.toggle [ Button.primary, Button.large ] [ text payeeName ]
-            , items = payeeDropdownItems filters transactions
-            }
+    Dropdown.dropdown
+        dropdown
+        { options = []
+        , toggleMsg = Update.DropdownMsg Model.PayeeDropdown
+        , toggleButton =
+            Dropdown.toggle [ Button.primary, Button.large ] [ text payeeName ]
+        , items = payeeDropdownItems filters transactions
+        }
 
 
 payeeDropdownItems : Model.Filters -> List Model.Transaction -> List (Dropdown.DropdownItem Msg)
@@ -194,7 +194,7 @@ payeeDropdownItems filters transactions =
                 |> List.map (Tuple.mapSecond Model.Active)
                 |> List.map payeeDropdownItem
     in
-        [ unselectItem ] ++ [ Dropdown.divider ] ++ payeeItems
+    [ unselectItem ] ++ [ Dropdown.divider ] ++ payeeItems
 
 
 payeeDropdownItem : ( String, Model.Filter Model.PayeeFilter ) -> Dropdown.DropdownItem Msg
@@ -215,8 +215,8 @@ viewSinceDatePicker datePicker transactions currentSince =
                 Model.Inactive ->
                     Nothing
     in
-        DatePicker.view
-            selected
-            (DatePickerSettings.default transactions)
-            datePicker
-            |> Html.map Update.SetDatePicker
+    DatePicker.view
+        selected
+        (DatePickerSettings.default transactions)
+        datePicker
+        |> Html.map Update.SetDatePicker

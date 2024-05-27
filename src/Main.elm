@@ -1,11 +1,11 @@
 module Main exposing (..)
 
+import Bootstrap.Dropdown as Dropdown
+import Model
 import Navigation
 import Router
-import Model
 import Update exposing (Msg(..))
 import View
-import Bootstrap.Dropdown as Dropdown
 
 
 init : Model.Config -> Navigation.Location -> ( Model.Model, Cmd Update.Msg )
@@ -18,7 +18,7 @@ init config location =
             ( Model.PrivacyPolicy, Cmd.none )
 
         ( Just Router.LoggedIn, Just token ) ->
-            ( Model.Loading Model.LoadingBudgets, (Update.send (FetchBudgets token)) )
+            ( Model.Loading Model.LoadingBudgets, Update.send (FetchBudgets token) )
 
         ( Just Router.LoggedIn, Nothing ) ->
             ( Model.Error Model.NoAccessToken, Cmd.none )

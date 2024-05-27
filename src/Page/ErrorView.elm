@@ -1,11 +1,11 @@
 module Page.ErrorView exposing (view)
 
+import Bootstrap.Alert as Alert
 import Html exposing (..)
 import Html.Attributes exposing (href)
 import Model exposing (ErrorType(..))
-import Update
 import Styling
-import Bootstrap.Alert as Alert
+import Update
 
 
 view : ErrorType -> Html Update.Msg
@@ -27,7 +27,7 @@ parseError errorType =
                 _ =
                     Debug.log "api error" error
             in
-                "We're having trouble contacting YNAB."
+            "We're having trouble contacting YNAB."
 
         InvalidRoute ->
             "Something in your browser is funky."

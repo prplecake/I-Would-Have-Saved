@@ -1,12 +1,12 @@
 module Page.PrivacyPolicy exposing (view)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Update exposing (Msg)
-import Styling
 import Bootstrap.Grid.Col as Col
 import Bootstrap.Text as Text
 import Bootstrap.Utilities.Spacing as Spacing
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Styling
+import Update exposing (Msg)
 
 
 view : Html Msg
